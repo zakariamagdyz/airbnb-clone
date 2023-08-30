@@ -38,28 +38,28 @@ module.exports = {
     ],
   },
 
-  // overrides: [
-  //   {
-  //     files: ["./src/**/*.test.ts?(x)"],
-  //     extends: [
-  //       "plugin:jest/recommended", // Turns on rules from vitest plugin
-  //       "plugin:jest-dom/recommended",
-  //       "plugin:testing-library/react",
-  //     ],
-  //     plugins: ["jest", "jest-dom", "testing-library"],
-  //     rules: {
-  //       "jest-dom/prefer-checked": "error",
-  //       "jest-dom/prefer-enabled-disabled": "error",
-  //       "jest-dom/prefer-required": "error",
-  //       "jest-dom/prefer-to-have-attribute": "error",
-  //       "testing-library/await-async-query": "error",
-  //       "testing-library/no-await-sync-query": "error",
-  //       "testing-library/no-debugging-utils": "warn",
-  //       "testing-library/no-dom-import": "off",
-  //       "testing-library/no-unnecessary-act": "off", // Turn off cause RHF need click actions wrapped in act
-  //     },
-  //   },
-  // ],
+  overrides: [
+    {
+      files: ["./src/**/*.test.ts?(x)"],
+      extends: [
+        "plugin:jest/recommended", // Turns on rules from vitest plugin
+        "plugin:jest-dom/recommended",
+        "plugin:testing-library/react",
+      ],
+      plugins: ["jest", "jest-dom", "testing-library"],
+      rules: {
+        "jest-dom/prefer-checked": "error",
+        "jest-dom/prefer-enabled-disabled": "error",
+        "jest-dom/prefer-required": "error",
+        "jest-dom/prefer-to-have-attribute": "error",
+        "testing-library/await-async-query": "error",
+        "testing-library/no-await-sync-query": "error",
+        "testing-library/no-debugging-utils": "warn",
+        "testing-library/no-dom-import": "off",
+        "testing-library/no-unnecessary-act": "off", // Turn off cause RHF need click actions wrapped in act
+      },
+    },
+  ],
   // overrides: [
   //   {
   //     files: ["./src/**/*.test.ts?(x)"],
