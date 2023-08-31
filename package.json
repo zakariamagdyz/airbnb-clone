@@ -56,7 +56,6 @@
     "prettier": "^3.0.0",
     "prettier-plugin-tailwind": "^2.2.12",
     "prettier-plugin-tailwindcss": "^0.3.0",
-    "prisma": "^5.0.0",
-    "ts-jest": "^29.1.1"
+    "prisma": "^5.0.0"
   }
 }
