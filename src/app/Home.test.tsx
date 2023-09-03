@@ -1,11 +1,11 @@
-import { render, screen } from "@testing-library/react"
+import { render, screen } from '@testing-library/react'
 
-import Home from "./page"
+import Home from './page'
 
-describe("Home", () => {
-  it("renders a heading", () => {
+describe('Home', () => {
+  it('renders a heading', () => {
     render(<Home />)
 
-    expect(screen.getByRole("heading")).toHaveTextContent("Hello Aribnb")
+    expect(screen.getByRole('heading')).toHaveTextContent('Hello Aribnb')
   })
 })

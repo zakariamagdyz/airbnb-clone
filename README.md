@@ -2,7 +2,8 @@
 
 ![Copy of Fullstack Twitter Clone (8)](https://user-images.githubusercontent.com/23248726/229031522-64a49ad0-66f7-4ea8-94a8-f64a0bb56736.png)
 
-This is a repository for a Full Stack Airbnb Clone with Next.js 13 App Router: React, Tailwind, Prisma, MongoDB, NextAuth.
+This is a repository for a Full Stack Airbnb Clone with Next.js 13 App Router: React, Tailwind, Prisma, MongoDB,
+NextAuth.
 
 Features:
 
@@ -27,10 +28,12 @@ Features:
   - For example we will filter out properties that have a reservation in your desired date range to travel
 - Favorites system
 - Shareable URL filters
-  - Lets say you select a category, location and date range, you will be able to share URL with a logged out friend in another browser and they will see the same results
+  - Lets say you select a category, location and date range, you will be able to share URL with a logged out friend in
+    another browser and they will see the same results
 - How to write POST and DELETE routes in route handlers (app/api)
 - How to fetch data in server react components by directly accessing database (WITHOUT API! like Magic!)
-- How to handle files like error.tsx and loading.tsx which are new Next 13 templating files to unify loading and error handling
+- How to handle files like error.tsx and loading.tsx which are new Next 13 templating files to unify loading and error
+  handling
 - How to handle relations between Server and Child components!
 
 ### Prerequisites
