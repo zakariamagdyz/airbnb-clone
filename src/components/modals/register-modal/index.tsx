@@ -1,3 +1,4 @@
+import { signIn } from 'next-auth/react'
 import { AiFillGithub } from 'react-icons/ai'
 import { FcGoogle } from 'react-icons/fc'
 
@@ -12,7 +13,7 @@ import { RegisterModalSchema } from './schema'
 
 const RegistarModal = () => {
   const registerModal = useRegisterModal()
-  const { errors, handleSubmit, isLoading, register } = useRegisterForm()
+  const { errors, handleSubmit, isLoading, register } = useRegisterForm({ closeModal: registerModal.onClose })
 
   const bodyContent = (
     <div className='space-y-4'>
@@ -38,7 +39,7 @@ const RegistarModal = () => {
         label='Continue with Google'
         icon={FcGoogle}
         onClick={() => {
-          console.log('')
+          signIn('google')
         }}
       ></Button>
       <Button
@@ -46,7 +47,7 @@ const RegistarModal = () => {
         label='Continue with Github'
         icon={AiFillGithub}
         onClick={() => {
-          console.log('')
+          signIn('github')
         }}
       ></Button>
     </div>

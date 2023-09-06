@@ -1,8 +1,6 @@
-import React from 'react'
-
+import Info from './info'
 import Logo from './logo'
 import Search from './search'
-import UserMenu from './user-menu'
 
 const Navbar = () => {
   return (
@@ -10,7 +8,7 @@ const Navbar = () => {
       <section className='container flex items-center justify-between gap-3 py-4 md:gap-0'>
         <Logo />
         <Search />
-        <UserMenu />
+        <Info />
       </section>
     </header>
   )
