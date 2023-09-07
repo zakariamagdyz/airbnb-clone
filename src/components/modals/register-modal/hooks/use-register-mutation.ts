@@ -7,9 +7,7 @@ type RegisterMutationVariables = {
 }
 
 type RegisterSuccessResponse = {
-  id: string
-  name: string
-  email: string
+  message: string
 }
 
 type RegisterErrorResponse = {
@@ -24,7 +22,7 @@ const useRegisterMutation = () => {
   ): Promise<RegisterSuccessResponse> {
     setLoading(true)
     try {
-      const response = await fetch('/api/register', {
+      const response = await fetch('/api/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

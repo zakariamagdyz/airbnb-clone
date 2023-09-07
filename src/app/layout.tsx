@@ -5,6 +5,7 @@ import { Nunito } from 'next/font/google'
 
 import Navbar from '@/components/header'
 
+import AuthProvider from '../providers/auth-provider'
 import ModalsProvider from '../providers/modals-provider'
 import ToastProvider from '../providers/toast-provider'
 
@@ -19,10 +20,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <ToastProvider />
-        <ModalsProvider />
-        <Navbar />
-        {children}
+        <AuthProvider>
+          <ToastProvider />
+          <ModalsProvider />
+          <Navbar />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   )

@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast'
 import { registerModalInitialValues, type RegisterModalSchema, registerModalSchema } from '../schema'
 import useRegisterMutation from './use-register-mutation'
 
-const useRegisterForm = () => {
+const useRegisterForm = ({ closeModal }: { closeModal: () => void }) => {
   const {
     register,
     handleSubmit,
@@ -21,15 +21,16 @@ const useRegisterForm = () => {
   const onSubmit = React.useCallback(
     async (data: RegisterModalSchema) => {
       try {
-        const registerdUser = await mutate(data)
-        console.log(registerdUser)
+        const res = await mutate(data)
+        closeModal()
+        toast.success(res.message)
       } catch (error) {
         if (error instanceof Error) {
           toast.error(error.message)
         }
       }
     },
-    [mutate]
+    [mutate, closeModal]
   )
 
   return { register, handleSubmit: handleSubmit(onSubmit), errors, isLoading }
