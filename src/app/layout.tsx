@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { Nunito } from 'next/font/google'
 
 import Navbar from '@/components/header'
+import { getCurrentUser } from '@/models/user/services'
 
 import AuthProvider from '../providers/auth-provider'
 import ModalsProvider from '../providers/modals-provider'
@@ -16,14 +17,15 @@ export const metadata: Metadata = {
   description: 'Airbnb clone by zakaria magdy',
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const currentUser = await getCurrentUser()
   return (
     <html lang='en'>
       <body className={inter.className}>
         <AuthProvider>
           <ToastProvider />
           <ModalsProvider />
-          <Navbar />
+          <Navbar currentUser={currentUser} />
           {children}
         </AuthProvider>
       </body>

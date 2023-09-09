@@ -148,25 +148,28 @@ const Modal: FC<ModalProps> = ({
               <h1 className='text-lg font-semibold'>{title}</h1>
             </header>
             {/*body*/}
-            <main className='relative flex-auto p-6'>{body}</main>
-            {/*footer*/}
-            <footer className='flex flex-col gap-2 p-6'>
-              <div
-                className='
+            <form onSubmit={handleSubmit}>
+              <main className='relative flex-auto p-6'>{body}</main>
+              {/*footer*/}
+              <footer className='flex flex-col gap-2 p-6'>
+                <div
+                  className='
               flex 
               w-full 
               flex-row 
               items-center 
               gap-4
             '
-              >
-                {secondaryAction && secondaryActionLabel && (
-                  <Button outline disabled={disabled} label={secondaryActionLabel} onClick={handleSecondaryAction} />
-                )}
-                <Button disabled={disabled} label={actionLabel} onClick={handleSubmit} />
-              </div>
-              {footer}
-            </footer>
+                >
+                  {secondaryAction && secondaryActionLabel && (
+                    <Button outline disabled={disabled} label={secondaryActionLabel} onClick={handleSecondaryAction} />
+                  )}
+                  <Button disabled={disabled} label={actionLabel} type='submit' />
+                </div>
+
+                {footer}
+              </footer>{' '}
+            </form>
           </article>
         </motion.div>
       </section>
