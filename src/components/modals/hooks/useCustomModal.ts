@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { FormEvent, useCallback } from 'react'
 
 type Props = {
   isOpen: boolean
@@ -23,10 +23,14 @@ const useCustomModal = ({ isOpen, onClose, onSumbit, disabled, secondaryAction }
     }, 300)
   }, [onClose, disabled])
 
-  const handleSubmit = useCallback(() => {
-    if (disabled) return
-    onSumbit()
-  }, [onSumbit, disabled])
+  const handleSubmit = useCallback(
+    (e: FormEvent) => {
+      if (disabled) return
+      e.preventDefault()
+      onSumbit()
+    },
+    [onSumbit, disabled]
+  )
 
   const handleSecondaryAction = useCallback(() => {
     if (disabled || !secondaryAction) return

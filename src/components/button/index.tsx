@@ -4,14 +4,15 @@ import { type IconType } from 'react-icons'
 
 type Props = {
   label: string
-  onClick: () => void
+  onClick?: () => void
   disabled?: boolean
   outline?: boolean
   small?: boolean
   icon?: IconType
+  type?: 'button' | 'submit' | 'reset'
 }
 
-const Button: React.FC<Props> = ({ label, onClick, disabled, icon: Icon, outline, small }) => {
+const Button: React.FC<Props> = ({ label, onClick, disabled, icon: Icon, outline, small, type = 'button' }) => {
   return (
     <button
       disabled={disabled}
@@ -20,6 +21,7 @@ const Button: React.FC<Props> = ({ label, onClick, disabled, icon: Icon, outline
                     ${small ? 'border px-2 py-1 text-sm font-light' : 'border-2 px-4 py-3 text-base font-bold'}
       
       `}
+      type={type}
       onClick={onClick}
     >
       {Icon && <Icon size={24} className='absolute left-4 top-3' />}

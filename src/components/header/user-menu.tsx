@@ -1,18 +1,23 @@
 'use client'
-import { signOut, useSession } from 'next-auth/react'
-import React, { useEffect, useRef } from 'react'
+import { User } from '@prisma/client'
+import { signOut } from 'next-auth/react'
+import React, { FC, useEffect, useRef } from 'react'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { MdLogin } from 'react-icons/md'
 import { VscAccount } from 'react-icons/vsc'
 
 import Avatar from '../avatar'
+import { useLoginModal } from '../modals/login-modal/hooks/use-login-modal'
 import { useRegisterModal } from '../modals/register-modal/hooks/use-register-modal'
 
-const UserMenu = () => {
+type UserMenuProps = {
+  currentUser: User | null
+}
+const UserMenu: FC<UserMenuProps> = ({ currentUser }) => {
   const [showMenu, setShowMenu] = React.useState(false)
   const { onOpen } = useRegisterModal()
+  const { onOpen: onLoginModalOpen } = useLoginModal()
   const dropdownRef = useRef<HTMLDivElement>(null)
-  const { data: AuthInfo } = useSession()
   const handleShowMenu = () => {
     setShowMenu(showMenu => !showMenu)
   }
@@ -38,16 +43,16 @@ const UserMenu = () => {
       >
         <AiOutlineMenu />
         <div className='hidden md:block'>
-          <Avatar src={AuthInfo?.user.image} />
+          <Avatar src={currentUser?.image} />
         </div>
       </button>
 
       {showMenu && (
         <div ref={dropdownRef} className='absolute right-0 top-14 w-48 rounded-md bg-white shadow-md'>
-          {AuthInfo?.user ? (
+          {currentUser ? (
             <ul className='flex flex-col gap-2 '>
               <li className='flex cursor-pointer items-center gap-3  hover:bg-slate-50'>
-                <p className='p-4'>{AuthInfo?.user.name}</p>
+                <p className='p-4'>{currentUser?.name}</p>
               </li>
               <li className='flex cursor-pointer items-center gap-3  hover:bg-slate-50'>
                 <button className='flex grow gap-3 p-4' onClick={() => signOut()}>
@@ -59,7 +64,7 @@ const UserMenu = () => {
           ) : (
             <ul className='flex flex-col gap-2 '>
               <li className='flex cursor-pointer items-center gap-3  hover:bg-slate-50'>
-                <button className='flex grow gap-3 p-4' onClick={() => console.log('ho')}>
+                <button className='flex grow gap-3 p-4' onClick={onLoginModalOpen}>
                   <MdLogin className='h-4 w-4' />
                   <span className='text-sm font-semibold'>Login</span>
                 </button>
