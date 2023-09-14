@@ -55,6 +55,19 @@ const UserMenu: FC<UserMenuProps> = ({ currentUser }) => {
                 <p className='p-4'>{currentUser?.name}</p>
               </li>
               <li className='flex cursor-pointer items-center gap-3  hover:bg-slate-50'>
+                <p className='p-4'>My trips</p>
+              </li>{' '}
+              <li className='flex cursor-pointer items-center gap-3  hover:bg-slate-50'>
+                <p className='p-4'>My favorites</p>
+              </li>
+              <li className='flex cursor-pointer items-center gap-3  hover:bg-slate-50'>
+                <p className='p-4'>My properties</p>
+              </li>
+              <li className='flex cursor-pointer items-center gap-3  hover:bg-slate-50'>
+                <p className='p-4'>Airbnb my home</p>
+              </li>
+              <hr />
+              <li className='flex cursor-pointer items-center gap-3  hover:bg-slate-50'>
                 <button className='flex grow gap-3 p-4' onClick={() => signOut()}>
                   <VscAccount className='h-4 w-4' />
                   <span className='text-sm font-semibold'>Signout</span>

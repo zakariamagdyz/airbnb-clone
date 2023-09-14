@@ -7,12 +7,14 @@ import Input from '@/components/inputs/input'
 
 import Modal from '../custom-modal'
 import Heading from '../register-modal/components/heading'
+import { useRegisterModal } from '../register-modal/hooks/use-register-modal'
 import useLoginForm from './hooks/use-login-form'
 import { useLoginModal } from './hooks/use-login-modal'
 import { LoginModalSchema } from './schema'
 
 const LoginModal = () => {
   const loginModal = useLoginModal()
+  const registerModal = useRegisterModal()
   const { errors, handleSubmit, isLoading, register } = useLoginForm({ closeModal: loginModal.onClose })
 
   const bodyContent = (
@@ -31,25 +33,40 @@ const LoginModal = () => {
   )
 
   const footerContent = (
-    <div className='mt-3 space-y-3'>
-      <hr />
-      <Button
-        outline
-        label='Continue with Google'
-        icon={FcGoogle}
-        onClick={() => {
-          signIn('google')
-        }}
-      ></Button>
-      <Button
-        outline
-        label='Continue with Github'
-        icon={AiFillGithub}
-        onClick={() => {
-          signIn('github')
-        }}
-      ></Button>
-    </div>
+    <footer>
+      <div className='mt-3 space-y-3'>
+        <hr />
+        <Button
+          outline
+          label='Continue with Google'
+          icon={FcGoogle}
+          onClick={() => {
+            signIn('google')
+          }}
+        ></Button>
+        <Button
+          outline
+          label='Continue with Github'
+          icon={AiFillGithub}
+          onClick={() => {
+            signIn('github')
+          }}
+        ></Button>
+      </div>
+      <p className='mt-6 text-center'>
+        Don&apos;t have an account?{' '}
+        <button
+          type='button'
+          className='text-blue-600 hover:underline'
+          onClick={() => {
+            loginModal.onClose()
+            registerModal.onOpen()
+          }}
+        >
+          Sign up
+        </button>
+      </p>
+    </footer>
   )
   return (
     <Modal
