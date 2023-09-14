@@ -6,6 +6,7 @@ import Button from '@/components/button'
 import Input from '@/components/inputs/input'
 
 import Modal from '../custom-modal'
+import { useLoginModal } from '../login-modal/hooks/use-login-modal'
 import Heading from './components/heading'
 import useRegisterForm from './hooks/use-register-form'
 import { useRegisterModal } from './hooks/use-register-modal'
@@ -13,6 +14,7 @@ import { RegisterModalSchema } from './schema'
 
 const RegistarModal = () => {
   const registerModal = useRegisterModal()
+  const loginModal = useLoginModal()
   const { errors, handleSubmit, isLoading, register } = useRegisterForm({ closeModal: registerModal.onClose })
 
   const bodyContent = (
@@ -32,25 +34,40 @@ const RegistarModal = () => {
   )
 
   const footerContent = (
-    <div className='mt-3 space-y-3'>
-      <hr />
-      <Button
-        outline
-        label='Continue with Google'
-        icon={FcGoogle}
-        onClick={() => {
-          signIn('google')
-        }}
-      ></Button>
-      <Button
-        outline
-        label='Continue with Github'
-        icon={AiFillGithub}
-        onClick={() => {
-          signIn('github')
-        }}
-      ></Button>
-    </div>
+    <footer>
+      <div className='mt-3 space-y-3'>
+        <hr />
+        <Button
+          outline
+          label='Continue with Google'
+          icon={FcGoogle}
+          onClick={() => {
+            signIn('google')
+          }}
+        ></Button>
+        <Button
+          outline
+          label='Continue with Github'
+          icon={AiFillGithub}
+          onClick={() => {
+            signIn('github')
+          }}
+        ></Button>
+      </div>
+      <p className='mt-6 text-center'>
+        Already have an account?{' '}
+        <button
+          type='button'
+          className='text-blue-600 hover:underline'
+          onClick={() => {
+            loginModal.onOpen()
+            registerModal.onClose()
+          }}
+        >
+          Login
+        </button>
+      </p>
+    </footer>
   )
   return (
     <Modal
