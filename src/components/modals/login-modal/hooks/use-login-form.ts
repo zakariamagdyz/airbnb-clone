@@ -26,6 +26,7 @@ const useLoginForm = ({ closeModal }: { closeModal: () => void }) => {
         await mutate({ variables: data })
         closeModal()
         router.refresh()
+        toast.success("You've successfully logged in!")
       } catch (error) {
         if (error instanceof Error) {
           toast.error(error.message)

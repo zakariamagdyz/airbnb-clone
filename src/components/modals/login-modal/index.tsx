@@ -54,7 +54,7 @@ const LoginModal = () => {
         ></Button>
       </div>
       <p className='mt-6 text-center'>
-        Don&apos;t have an account?{' '}
+        First time using Airbnb?{' '}
         <button
           type='button'
           className='text-blue-600 hover:underline'
@@ -63,7 +63,7 @@ const LoginModal = () => {
             registerModal.onOpen()
           }}
         >
-          Sign up
+          Create an account
         </button>
       </p>
     </footer>
