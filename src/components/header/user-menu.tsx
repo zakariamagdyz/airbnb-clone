@@ -9,6 +9,7 @@ import { VscAccount } from 'react-icons/vsc'
 import Avatar from '../avatar'
 import { useLoginModal } from '../modals/login-modal/hooks/use-login-modal'
 import { useRegisterModal } from '../modals/register-modal/hooks/use-register-modal'
+import { useRentModal } from '../modals/rent-modal/hooks/use-rent-modal'
 
 type UserMenuProps = {
   currentUser: User | null
@@ -17,6 +18,7 @@ const UserMenu: FC<UserMenuProps> = ({ currentUser }) => {
   const [showMenu, setShowMenu] = React.useState(false)
   const { onOpen } = useRegisterModal()
   const { onOpen: onLoginModalOpen } = useLoginModal()
+  const { onOpen: onRentModalOpen } = useRentModal()
   const dropdownRef = useRef<HTMLDivElement>(null)
   const handleShowMenu = () => {
     setShowMenu(showMenu => !showMenu)
@@ -64,7 +66,9 @@ const UserMenu: FC<UserMenuProps> = ({ currentUser }) => {
                 <p className='p-4'>My properties</p>
               </li>
               <li className='flex cursor-pointer items-center gap-3  hover:bg-slate-50'>
-                <p className='p-4'>Airbnb my home</p>
+                <button className='p-4' onClick={onRentModalOpen}>
+                  Airbnb my home
+                </button>
               </li>
               <hr />
               <li className='flex cursor-pointer items-center gap-3  hover:bg-slate-50'>
