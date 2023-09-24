@@ -1,5 +1,9 @@
-import CategoryStep from '../components/CategoryStep'
-import LocationStep from '../components/LocationStep'
+import CategoryStep from '../components/category-step'
+import DescriptionStep from '../components/description-step'
+import ImagesStep from '../components/images-step'
+import InfoStep from '../components/info-step'
+import LocationStep from '../components/location-step'
+import PriceStep from '../components/price-step'
 
 export enum ListingSteps {
   CATEGORY,
@@ -24,21 +28,21 @@ export const STEP_COMPONENTS = {
   [ListingSteps.INFO]: {
     title: 'Share some basics about your place',
     subTitle: 'Let guests know the amenities you offer',
-    Component: CategoryStep,
+    Component: InfoStep,
   },
   [ListingSteps.IMAGES]: {
     title: 'Add photos of your place',
     subTitle: 'Help guests visualize their stay',
-    Component: CategoryStep,
+    Component: ImagesStep,
   },
   [ListingSteps.DESCRIPTION]: {
     title: 'Describe your place',
     subTitle: 'Provide a brief and enticing description',
-    Component: CategoryStep,
+    Component: DescriptionStep,
   },
   [ListingSteps.PRICE]: {
     title: 'Set your price',
     subTitle: 'How much will you charge per night?',
-    Component: CategoryStep,
+    Component: PriceStep,
   },
 }

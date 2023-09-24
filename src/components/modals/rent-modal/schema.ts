@@ -8,10 +8,10 @@ export const rentFormSchema = z.object({
   guestCount: z.number().int().positive(),
   roomCount: z.number().int().positive(),
   bathroomCount: z.number().int().positive(),
-  imageSrc: z.string().nonempty(),
+  imageSrc: z.string().nonempty("Image can't be empty"),
   price: z.number().int().positive(),
-  title: z.string().nonempty(),
-  description: z.string().nonempty(),
+  title: z.string().nonempty("Title can't be empty"),
+  description: z.string().nonempty("Description can't be empty"),
 })
 
 export const RentInitalValues: RentFormSchema = {

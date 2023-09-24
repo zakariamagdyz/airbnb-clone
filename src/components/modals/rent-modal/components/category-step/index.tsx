@@ -3,7 +3,7 @@ import { type IconType } from 'react-icons'
 
 import { categories } from '@/components/header/Categories'
 
-import { StepProps } from '../types'
+import { StepProps } from '../../types'
 
 const CategoryStep = ({ control, setCustomValue }: StepProps) => {
   const category = useWatch({ control, name: 'category' })
