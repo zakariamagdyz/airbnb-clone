@@ -22,8 +22,8 @@ const RentModal = () => {
       [ListingSteps.CATEGORY]: 'category',
       [ListingSteps.LOCATION]: 'location',
       [ListingSteps.INFO]: ['bathroomCount', 'guestCount', 'roomCount'],
-      [ListingSteps.DESCRIPTION]: 'description',
       [ListingSteps.IMAGES]: 'imageSrc',
+      [ListingSteps.DESCRIPTION]: ['description', 'title'],
       [ListingSteps.PRICE]: 'price',
     }
 
