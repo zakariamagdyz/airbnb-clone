@@ -13,7 +13,7 @@ import { RentFormSchema } from './types'
 const RentModal = () => {
   const RentModal = useRentModal()
   const [currentStep, setCurrentStep] = useState<ListingSteps>(ListingSteps.CATEGORY)
-  const { control, handleSubmit, setValue, trigger } = useRentForm({ closeModal: RentModal.onClose })
+  const { control, handleSubmit, setValue, trigger, register } = useRentForm({ closeModal: RentModal.onClose })
   const handleBack = () => {
     setCurrentStep(step => step - 1)
   }
@@ -23,11 +23,11 @@ const RentModal = () => {
       [ListingSteps.LOCATION]: 'location',
       [ListingSteps.INFO]: ['bathroomCount', 'guestCount', 'roomCount'],
       [ListingSteps.IMAGES]: 'imageSrc',
-      [ListingSteps.DESCRIPTION]: ['description', 'title'],
+      [ListingSteps.DESCRIPTION]: ['title', 'description'],
       [ListingSteps.PRICE]: 'price',
     }
 
-    const isValid = await trigger(fieldNamesMap[currentStep])
+    const isValid = await trigger(fieldNamesMap[currentStep], { shouldFocus: true })
 
     if (isValid) {
       setCurrentStep(prevStep => prevStep + 1)
@@ -49,12 +49,11 @@ const RentModal = () => {
     return (
       <section className='space-y-8'>
         <Heading title={title} subtitle={subTitle} />
-        <Component control={control} setCustomValue={updateFieldValue} />
+        <Component control={control} setCustomValue={updateFieldValue} register={register} />
       </section>
     )
-  }, [control, currentStep, updateFieldValue])
+  }, [control, currentStep, updateFieldValue, register])
 
-  const footerContent = <footer></footer>
   return (
     <Modal
       isOpen={RentModal.isModalOpen}
@@ -63,7 +62,6 @@ const RentModal = () => {
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={currentStep === ListingSteps.CATEGORY ? RentModal.onClose : handleBack}
       body={bodyContent}
-      footer={footerContent}
       onClose={RentModal.onClose}
       onSumbit={currentStep === ListingSteps.PRICE ? handleSubmit : handleNext}
     />

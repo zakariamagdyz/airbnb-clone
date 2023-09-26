@@ -1,18 +1,31 @@
-import React from 'react'
-import Select from 'react-select'
+import React, { Ref } from 'react'
+import Select, { type GroupBase, type SelectInstance } from 'react-select'
 
 import { getAllCountries, getCountryByValue } from '@/utils/countries'
 
 type CountrySelectProps = {
   value: string
   onChange: (value: string) => void
+  isError: boolean
 }
-const CountrySelect: React.FC<CountrySelectProps> = ({ onChange, value }) => {
+
+type Option = {
+  value: string
+  label: string
+  flag: string
+  latlng: [number, number]
+  region: string
+}
+const CountrySelect = (
+  { onChange, value, isError }: CountrySelectProps,
+  ref: Ref<SelectInstance<Option, false, GroupBase<Option>>>
+) => {
   const countries = getAllCountries()
   const currentCountry = value ? getCountryByValue(value) : null
   return (
     <div className='relative z-20'>
       <Select
+        ref={ref}
         isClearable
         placeholder='Anywhere'
         options={countries}
@@ -26,7 +39,7 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ onChange, value }) => {
           </div>
         )}
         classNames={{
-          control: () => 'p-3 border-2',
+          control: () => `p-3 border-2 ${isError && '!border-red-500  shadow-red-500'}`,
           input: () => 'text-lg',
           option: () => 'text-lg',
         }}
@@ -45,4 +58,4 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ onChange, value }) => {
   )
 }
 
-export default CountrySelect
+export default React.forwardRef(CountrySelect)

@@ -12,7 +12,7 @@ const ImagesStep = ({ control, setCustomValue }: StepProps) => {
   return (
     <section className='flex flex-col gap-8'>
       {error && <p className='text-red-500'>{error.message}</p>}
-      <ImageUpload value={imageSrc} onUpload={value => setCustomValue('imageSrc', value)} />
+      <ImageUpload value={imageSrc} isError={!!error} onUpload={value => setCustomValue('imageSrc', value)} />
     </section>
   )
 }

@@ -11,6 +11,7 @@ const LocationStep = ({ control, setCustomValue }: StepProps) => {
   const location = useWatch({ control, name: 'location' })
   const currentLocation = location ? getCountryByValue(location) : null
   const {
+    field: { ref },
     fieldState: { error },
   } = useController({ control, name: 'location' })
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -19,7 +20,12 @@ const LocationStep = ({ control, setCustomValue }: StepProps) => {
     <section className='flex flex-col gap-8'>
       {error && <p className='text-red-500'>{error.message}</p>}
       <div className=' space-y-8'>
-        <CountrySelect value={location} onChange={value => setCustomValue('location', value)} />
+        <CountrySelect
+          ref={ref}
+          value={location}
+          isError={!!error}
+          onChange={value => setCustomValue('location', value)}
+        />
         <Map center={currentLocation?.latlng ?? [51.505, -0.09]} />
       </div>
     </section>
