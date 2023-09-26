@@ -7,9 +7,10 @@ import { TbPhotoPlus } from 'react-icons/tb'
 type ImageUploadProps = {
   onUpload: (url: string) => void
   value: string
+  isError: boolean
 }
 const UPLOAD_PRESET = 'u6ivk3gd'
-const ImageUpload: React.FC<ImageUploadProps> = ({ onUpload, value }) => {
+const ImageUpload: React.FC<ImageUploadProps> = ({ onUpload, value, isError }) => {
   const handleUpload = useCallback(
     (result: CldUploadWidgetResults) => {
       onUpload((result.info as { secure_url: string }).secure_url)
@@ -21,7 +22,9 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onUpload, value }) => {
       {({ open }) => (
         <button
           type='button'
-          className='relative flex w-full flex-col items-center justify-center gap-4 border-2 border-dashed border-neutral-300 p-20 text-neutral-600 transition hover:opacity-70'
+          className={`relative flex w-full flex-col items-center justify-center gap-4 border-2 border-dashed border-neutral-300 p-20 text-neutral-600 transition hover:opacity-70 ${
+            isError && 'border-red-500'
+          }`}
           onClick={() => open()}
         >
           <TbPhotoPlus className='text-4xl' />

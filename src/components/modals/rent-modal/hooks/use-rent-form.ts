@@ -13,7 +13,6 @@ const useRentForm = ({ closeModal }: { closeModal: () => void }) => {
     defaultValues: RentInitalValues,
   })
   const router = useRouter()
-
   const onSubmit = React.useCallback(
     async (data: RentFormSchema) => {
       try {

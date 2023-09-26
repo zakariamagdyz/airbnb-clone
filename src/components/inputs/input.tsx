@@ -1,3 +1,4 @@
+import React from 'react'
 import { FieldErrors, FieldValues, Path, UseFormRegister } from 'react-hook-form'
 import { BiDollar } from 'react-icons/bi'
 
@@ -7,21 +8,11 @@ type InputProps<T extends FieldValues> = {
   type?: string
   disabled?: boolean
   formatPrice?: boolean
-  register?: UseFormRegister<T>
+  register: UseFormRegister<T>
   errors: FieldErrors
 }
 
-const Input = <TSchema extends FieldValues>({
-  errors,
-  formatPrice,
-  id,
-  label,
-  register,
-  disabled,
-  type,
-  ...props
-}: InputProps<TSchema>) => {
-  const formInputProps = register ? { ...register(id) } : {}
+const Input = <T extends FieldValues>({ errors, formatPrice, id, label, register, disabled, type }: InputProps<T>) => {
   return (
     <div className='relative w-full'>
       {formatPrice && (
@@ -36,9 +27,9 @@ const Input = <TSchema extends FieldValues>({
         />
       )}
       <input
+        {...register(id)}
         id={id}
         disabled={disabled}
-        {...formInputProps}
         placeholder=' '
         type={type}
         className={`
@@ -48,7 +39,6 @@ const Input = <TSchema extends FieldValues>({
             ${errors[id] ? 'focus:border-rose-500' : 'focus:border-black'}      
       
       `}
-        {...props}
       />
       <label
         className={`
@@ -68,5 +58,4 @@ const Input = <TSchema extends FieldValues>({
     </div>
   )
 }
-
 export default Input
