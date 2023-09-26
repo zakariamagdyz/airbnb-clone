@@ -18,6 +18,7 @@ const CategoryStep = ({ control, setCustomValue }: StepProps) => {
         {categories.map(item => (
           <CategoryBox
             key={item.label}
+            isError={!!error}
             label={item.label}
             icon={item.icon}
             selected={category === item.label}
@@ -35,17 +36,18 @@ export default CategoryStep
 
 type CategoryBoxProps = {
   icon: IconType
+  isError: boolean
   label: string
   onClick: (value: string) => void
   selected?: boolean
 }
-const CategoryBox = ({ icon: Icon, label, onClick, selected }: CategoryBoxProps) => {
+const CategoryBox = ({ icon: Icon, label, onClick, selected, isError }: CategoryBoxProps) => {
   return (
     <button
       type='button'
       className={`cursor-pointer space-y-3 rounded-xl border-2 p-4 transition hover:border-black ${
         selected && 'border-black'
-      }`}
+      } ${isError && 'border-red-300'}`}
       onClick={() => onClick(label)}
     >
       <Icon size={30} />
