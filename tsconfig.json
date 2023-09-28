@@ -13,7 +13,6 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-
     "paths": {
       "@/assets/*": ["./public/images/*"],
       "@/components/*": ["./src/components/*"],
@@ -21,7 +20,12 @@
       "@/utils/*": ["./src/utils/*"],
       "@/libs/*": ["./src/libs/*"],
       "@/models/*": ["./src/models/*"]
-    }
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

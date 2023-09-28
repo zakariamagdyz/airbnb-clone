@@ -4,7 +4,7 @@ import { type IconType } from 'react-icons'
 
 type Props = {
   label: string
-  onClick?: () => void
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
   disabled?: boolean
   outline?: boolean
   small?: boolean

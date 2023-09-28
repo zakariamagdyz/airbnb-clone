@@ -13,7 +13,9 @@ import { RentFormSchema } from './types'
 const RentModal = () => {
   const RentModal = useRentModal()
   const [currentStep, setCurrentStep] = useState<ListingSteps>(ListingSteps.CATEGORY)
-  const { control, handleSubmit, setValue, trigger, register } = useRentForm({ closeModal: RentModal.onClose })
+  const { control, handleSubmit, setValue, trigger, register, formState } = useRentForm({
+    closeModal: RentModal.onClose,
+  })
   const handleBack = () => {
     setCurrentStep(step => step - 1)
   }
@@ -57,6 +59,7 @@ const RentModal = () => {
   return (
     <Modal
       isOpen={RentModal.isModalOpen}
+      disabled={formState.isSubmitting}
       title='Airnbn your home'
       actionLabel={actionLabel}
       secondaryActionLabel={secondaryActionLabel}

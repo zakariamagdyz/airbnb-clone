@@ -25,7 +25,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onUpload, value, isError }) =
           className={`relative flex w-full flex-col items-center justify-center gap-4 border-2 border-dashed border-neutral-300 p-20 text-neutral-600 transition hover:opacity-70 ${
             isError && 'border-red-500'
           }`}
-          onClick={() => open()}
+          onClick={() => open?.()}
         >
           <TbPhotoPlus className='text-4xl' />
           <p className='text-lg font-semibold'>Upload an image</p>

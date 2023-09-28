@@ -45,6 +45,7 @@ model User {
   password      String?
   image         String?
   role          String        @default("user")
+  favoriteIds   String[]      @db.ObjectId
   accounts      Account[]
   sessions      Session[]
   Listing       Listing[]
@@ -72,10 +73,10 @@ model Listing {
   guestCount    Int
   userId        String   @db.ObjectId
   price         Int
+  location      String
 
   user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
   reservations Reservation[]
-  locationId   String        @db.ObjectId
 }
 
 model Reservation {

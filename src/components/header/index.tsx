@@ -7,7 +7,7 @@ import Logo from './logo'
 import Search from './search'
 
 type NavbarProps = {
-  currentUser: User | null
+  currentUser: Omit<User, 'password'> | null
 }
 
 const Navbar: FC<NavbarProps> = ({ currentUser }) => {
