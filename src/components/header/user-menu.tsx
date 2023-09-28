@@ -12,7 +12,7 @@ import { useRegisterModal } from '../modals/register-modal/hooks/use-register-mo
 import { useRentModal } from '../modals/rent-modal/hooks/use-rent-modal'
 
 type UserMenuProps = {
-  currentUser: User | null
+  currentUser: Omit<User, 'password'> | null
 }
 const UserMenu: FC<UserMenuProps> = ({ currentUser }) => {
   const [showMenu, setShowMenu] = React.useState(false)
