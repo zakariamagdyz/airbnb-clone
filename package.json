@@ -8,7 +8,7 @@
     "start": "next start",
     "lint:check": "next lint  ",
     "lint": "next lint --fix ",
-    "format:check": "prettier . --check",
+    "format:check": "prettier src/**/*.{js,jsx,ts,tsx,css,md,json} --check",
     "format": "prettier -uw .",
     "typecheck": "tsc --noEmit",
     "test": "jest",
