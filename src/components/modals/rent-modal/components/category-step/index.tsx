@@ -1,7 +1,7 @@
 import { useController, useWatch } from 'react-hook-form'
 import { type IconType } from 'react-icons'
 
-import { categories } from '@/components/header/Categories'
+import { categories } from '@/utils/categories'
 
 import { StepProps } from '../../types'
 

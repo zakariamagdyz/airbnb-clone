@@ -3,6 +3,8 @@ import { useRouter } from 'next/navigation'
 import { useCallback, useMemo } from 'react'
 import toast from 'react-hot-toast'
 
+import { WithAuthCheck } from '@/utils/WithAuthChecks'
+
 type useFavoriteProps = {
   listingId: string
   currentUser: Omit<User, 'password'> | null
@@ -35,9 +37,11 @@ const useFavorite = ({ currentUser, listingId }: useFavoriteProps) => {
     }
   }, [listingId, hasFavorited, router])
 
+  const toggleFavoriteWithAuth = WithAuthCheck(toggleFavorite)
+
   return {
     hasFavorited,
-    toggleFavorite,
+    toggleFavoriteWithAuth,
   }
 }
 
