@@ -1,3 +1,5 @@
+import { cache } from 'react'
+
 import prismadb from '@/libs/prismadb'
 
 import { Listing } from './schema'
@@ -9,3 +11,12 @@ export const createListing = async (listingData: Listing, userId: string) => {
 export const getListings = async ({ category }: { category?: string } = { category: '' }) => {
   return prismadb.listing.findMany({ orderBy: { createdAt: 'desc' }, where: { category } })
 }
+
+export const getListingById = cache(async (id: string) => {
+  try {
+    return await prismadb.listing.findUnique({ where: { id }, include: { user: true } })
+  } catch (err) {
+    console.error(`Error fetching listing by id ${id}:`, err) // Optional: log the error for debugging
+    return null
+  }
+})

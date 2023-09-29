@@ -13,6 +13,7 @@ import ToastProvider from '../providers/toast-provider'
 const inter = Nunito({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(`${process.env.APP_URL}`),
   title: 'Airbnb',
   description: 'Airbnb clone by zakaria magdy',
   icons: {
@@ -37,6 +38,7 @@ export const metadata: Metadata = {
     images: ['/images/logo.png'],
     type: 'website',
     siteName: 'Airbnb',
+    locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
