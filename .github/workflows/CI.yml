@@ -63,6 +63,8 @@ jobs:
     strategy:
       matrix:
         node-version: [16.x, 18.x]
+    env:
+      APP_URL: 'http://localhost:3000'
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
