@@ -1,3 +1,4 @@
+'use client'
 import { User } from '@prisma/client'
 import { FC } from 'react'
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
@@ -5,7 +6,7 @@ import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 import useFavorite from './hooks/useFavorite'
 
 type HeartButtonProps = {
-  currentUser: Omit<User, 'password'> | null
+  currentUser?: Omit<User, 'password'> | null
   listingId: string
 }
 const HeartButton: FC<HeartButtonProps> = ({ currentUser, listingId }) => {

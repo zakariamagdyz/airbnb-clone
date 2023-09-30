@@ -14,7 +14,7 @@ const LocationStep = ({ control, setCustomValue }: StepProps) => {
     fieldState: { error },
   } = useController({ control, name: 'location' })
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const Map = useMemo(() => dynamic(() => import('./map'), { ssr: false }), [currentLocation])
+  const Map = useMemo(() => dynamic(() => import('@/components/map'), { ssr: false }), [currentLocation])
   return (
     <section className='flex flex-col gap-8'>
       {error && <p className='text-red-500'>{error.message}</p>}
