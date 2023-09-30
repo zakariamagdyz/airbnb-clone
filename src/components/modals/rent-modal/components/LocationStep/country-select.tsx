@@ -11,14 +11,14 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ onChange, value }) => {
   const countries = getAllCountries()
   const currentCountry = value ? getCountryByValue(value) : null
   return (
-    <div className='relative z-20'>
+    <div className=' '>
       <Select
         isClearable
         placeholder='Anywhere'
         options={countries}
         value={currentCountry}
         formatOptionLabel={option => (
-          <div className='relative z-10 flex items-center gap-3'>
+          <div className='relative  flex items-center gap-3'>
             <p>{option.flag}</p>
             <p>
               {option.label},<span className='ml-1 text-neutral-500'>{option.region}</span>

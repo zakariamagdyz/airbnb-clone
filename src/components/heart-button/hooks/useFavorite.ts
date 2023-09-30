@@ -7,7 +7,7 @@ import { WithAuthCheck } from '@/utils/WithAuthChecks'
 
 type useFavoriteProps = {
   listingId: string
-  currentUser: Omit<User, 'password'> | null
+  currentUser?: Omit<User, 'password'> | null
 }
 const useFavorite = ({ currentUser, listingId }: useFavoriteProps) => {
   const router = useRouter()
