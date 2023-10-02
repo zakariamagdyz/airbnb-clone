@@ -54,10 +54,12 @@ export const useDateReservation = ({ initialPrice, reservations, listingId }: Us
   const router = useRouter()
   const onCreateReservation = async () => {
     try {
-      await createReservationWithAuthCheck({
+      const reservation = await createReservationWithAuthCheck({
         variables: { startDate: dateRange.startDate, endDate: dateRange.endDate, totalPrice, listingId },
       })
+      if (!reservation) return
       toast.success('Reservation created successfully!')
+      router.refresh()
       router.push('/trips')
     } catch (error) {
       if (error instanceof Error) {
