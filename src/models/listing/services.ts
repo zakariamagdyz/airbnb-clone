@@ -2,6 +2,7 @@ import { cache } from 'react'
 
 import prismadb from '@/libs/prismadb'
 
+import { ReservationSchema } from '../reservation/schema'
 import { Listing } from './schema'
 
 export const createListing = async (listingData: Listing, userId: string) => {
@@ -20,3 +21,18 @@ export const getListingById = cache(async (id: string) => {
     return null
   }
 })
+
+type UpdateListingReservationProp = ReservationSchema & { userId: string }
+
+export const updateListingReservation = ({
+  endDate,
+  listingId,
+  startDate,
+  totalPrice,
+  userId,
+}: UpdateListingReservationProp) => {
+  return prismadb.listing.update({
+    where: { id: listingId },
+    data: { reservations: { create: { endDate, startDate, totalPrice, userId } } },
+  })
+}

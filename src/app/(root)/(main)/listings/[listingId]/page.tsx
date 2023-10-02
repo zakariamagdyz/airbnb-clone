@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 
 import EmptyState from '@/components/empty-state'
 import { getListingById } from '@/models/listing/services'
+import { getReservations } from '@/models/reservation/services'
 import { getCurrentUser } from '@/models/user/services'
 
 import ListingClient from './components/listing-client'
@@ -20,10 +21,12 @@ export const generateMetadata = async ({ params: { listingId } }: Props): Promis
 }
 const ListingPage = async ({ params: { listingId } }: Props) => {
   const listing = await getListingById(listingId)
+  const reservations = await getReservations({ listingId })
+
   const user = await getCurrentUser()
 
   if (!listing) return <EmptyState />
-  return <ListingClient listing={listing} currentUser={user} />
+  return <ListingClient listing={listing} currentUser={user} reservations={reservations} />
 }
 
 export default ListingPage
